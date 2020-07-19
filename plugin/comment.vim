@@ -19,12 +19,12 @@
     endf
 
     func! s:getComment()
-        if &filetype == 'vim'
-            return '"'
-        elseif &filetype == 'conf'
-            return '#'
-        endif
-        return '//'
+        let defaultComments = {'vim': '"', 'vimrc': '"',
+                            \  'zsh': '#', 'zsrc': '#', 
+                            \  'bash': '#', 'bashrc': '#',
+                            \  'js': '//', 'ts': '//'}
+        let comments = get(g:, 'vim_comments', defaultComments)
+        return get(comments, expand('%:e'), '//')
     endf
 
     func! s:checkComment(num1, num2, com)
