@@ -1,7 +1,6 @@
 " 快速注释
-    nnoremap <silent> ?? :<c-u>call <SID>setComment(line("."), line("."))<CR>
-    xnoremap <silent> /  :<c-u>call <SID>setComment(line("'<"), line("'>"))<CR>
-    snoremap <silent> /  <c-g>:<c-u>call <SID>setComment(line("'<"), line("'>"))<CR>
+    command! NSetComment call <SID>setComment(line("."), line("."))
+    command! VSetComment call <SID>setComment(line("'<"), line("'>"))
 
     func! s:setComment(num1, num2)
         let com = s:getComment()
