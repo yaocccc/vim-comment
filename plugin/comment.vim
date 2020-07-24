@@ -20,7 +20,7 @@
 
     func! s:getComment()
         let defaultComments = {'vim': '"', 'vimrc': '"',
-                            \  'zsh': '#', 'zsrc': '#', 
+                            \  'zsh': '#', 'zshrc': '#', 
                             \  'bash': '#', 'bashrc': '#',
                             \  'js': '//', 'ts': '//'}
         let comments = get(g:, 'vim_comments', defaultComments)
