@@ -25,11 +25,10 @@ endf
 
 func! s:getComment()
     let defaultComments = {'vim': '"', 'vimrc': '"',
-                        \  'zsh': '#', 'zshrc': '#', 
-                        \  'bash': '#', 'bashrc': '#',
-                        \  'js': '//', 'ts': '//'}
+                        \  'js': '//', 'ts': '//',
+                        \  'java': '//', 'class': '//'}
     let comments = get(g:, 'vim_comments', defaultComments)
-    return get(comments, expand('%:e'), '//')
+    return get(comments, expand('%:e'), '#')
 endf
 
 func! s:checkComment(num1, num2, com)
