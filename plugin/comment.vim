@@ -26,7 +26,8 @@ endf
 func! s:getComment()
     let defaultComments = {'vim': '"', 'vimrc': '"',
                         \  'js': '//', 'ts': '//',
-                        \  'java': '//', 'class': '//'}
+                        \  'java': '//', 'class': '//',
+                        \  'c': '//', 'h': '//'}
     let comments = get(g:, 'vim_comments', defaultComments)
     return get(comments, expand('%:e'), '#')
 endf
