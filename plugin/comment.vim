@@ -52,7 +52,7 @@ func! s:toggleCounkComment(num1, num2)
     if commented
         for num in range(a:num1 + 1, a:num2 - 1)
             let line = getline(num)
-            call setline(num, substitute(line, coms[1] . '  ', '', ''))
+            call setline(num, substitute(line, '\M' . coms[1] . '  ', '', ''))
         endfor
         call deletebufline('%', a:num2)
         call deletebufline('%', a:num1)
