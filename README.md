@@ -29,9 +29,9 @@
 ## options
 
 ```options
-  you can set comment of suffix
+  set comments of filename suffix
   default:
-    let g:vim_line_comments = {   'vim': '"', 'vimrc': '"',
+    let g:vim_line_comments = { 'vim': '"', 'vimrc': '"',
                              \  'js': '//', 'ts': '//',
                              \  'java': '//', 'class': '//',
                              \  'c': '//', 'h': '//'}
@@ -40,8 +40,12 @@
                              \  'vimrc': ['"', '"', '"'],
                              \  'sh': [':<<!', '', '!'],
                              \  'md': ['```', '', '```']
-                             \  'default': ['/* ', ' * ', ' */']}
-  you can set some map to toggleComment
+                             \  'default': ['/*', ' *', ' */']}
+
+  the space length between the comment and the content
+    let g:vim_comment_gap = 1
+
+  some map to toggleComment
   example:
     nmap <silent> ?? :NToggleComment<CR>
     xmap <silent> /  :<c-u>VToggleComment<CR>
@@ -51,9 +55,9 @@
 ```
 
 ```options
-  你可以为不同的文件后缀设置注释
+  为不同的文件后缀设置注释
   默认:
-    let g:vim_line_comments = {   'vim': '"', 'vimrc': '"',
+    let g:vim_line_comments = {  'vim': '"', 'vimrc': '"',
                              \  'js': '//', 'ts': '//',
                              \  'java': '//', 'class': '//',
                              \  'c': '//', 'h': '//'}
@@ -62,8 +66,12 @@
                              \  'vimrc': ['"', '"', '"'],
                              \  'sh': [':<<!', '', '!'],
                              \  'md': ['```', '', '```']
-                             \  'default': ['/* ', ' * ', ' */']}
-  你可以自定义快捷键
+                             \  'default': ['/*', ' *', ' */']}
+
+  自定义注释标记和被注释内容的间隔空格长度
+    let g:vim_comment_gap = 1
+
+  自定义快捷键
   例如:
     nmap <silent> ?? :NToggleComment<CR>
     xmap <silent> /  :<c-u>VToggleComment<CR>
