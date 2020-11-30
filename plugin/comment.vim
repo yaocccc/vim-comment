@@ -1,8 +1,8 @@
 if exists('s:loaded') | finish | endif
 let s:loaded = 1
 
-let s:lienComments  = get(g:, 'vim_line_comments',  { 'vim': '"', 'vimrc': '"', 'js': '//', 'ts': '//', 'java': '//', 'class': '//', 'c': '//', 'h': '//' })
-let s:counkComments = get(g:, 'vim_counk_comments', { 'vim': ['"', '"', '"'], 'vimrc': ['"', '"', '"'], 'sh': [':<<!', '', '!'], 'md': ['```', '', '```'] })
+let s:line_comments  = get(g:, 'vim_line_comments',  { 'vim': '"', 'vimrc': '"', 'js': '//', 'ts': '//', 'java': '//', 'class': '//', 'c': '//', 'h': '//' })
+let s:counk_comments = get(g:, 'vim_counk_comments', { 'vim': ['"', '"', '"'], 'vimrc': ['"', '"', '"'], 'sh': [':<<!', '', '!'], 'md': ['```', '', '```'] })
 let s:vim_comment_gap = get(g:, 'vim_comment_gap', 1)
 
 command! NToggleComment call <SID>toggleLineComment(line("."), line("."))
@@ -10,7 +10,7 @@ command! VToggleComment call <SID>toggleLineComment(line("'<"), line("'>"))
 command! CToggleComment call <SID>toggleCounkComment(line("'<"), line("'>"))
 
 func! s:toggleLineComment(num1, num2)
-    let com = get(s:lienComments, expand('%:e'), '#')
+    let com = get(s:line_comments, expand('%:e'), '#')
     let [commented, col] = s:checkLineComment(a:num1, a:num2, com)
     let com = com . printf('%'.s:vim_comment_gap.'s', '')
     if commented
@@ -42,7 +42,7 @@ func! s:checkLineComment(num1, num2, com)
 endf
 
 func! s:toggleCounkComment(num1, num2)
-    let coms = get(s:counkComments, expand('%:e'), ['/* ', ' * ', ' */'])
+    let coms = get(s:counk_comments, expand('%:e'), ['/* ', ' * ', ' */'])
     let [commented, col] = s:checkCounkComment(a:num1, a:num2, coms)
     if commented
         for num in range(a:num1 + 1, a:num2 - 1)
