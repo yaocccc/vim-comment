@@ -1,5 +1,7 @@
 # vim-comment
 
+![avatar](./show.gif)
+
 ## usage
 
 ```comment
