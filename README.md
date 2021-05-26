@@ -19,7 +19,7 @@
 ```comment
     NToggleComment: normal mode to toggleLineComment
     VToggleComment: visual or select mode to toggleLineComment
-    CToggleComment: visual or select mode to toggleCounkComment
+    CToggleComment: visual or select mode to toggleChunkComment
 ```
 
 ```comment
@@ -38,7 +38,7 @@
                              \  'java': '//', 'class': '//',
                              \  'c': '//', 'h': '//'}
                              \  'default: '#' }
-    let g:vim_counk_comments = {'vim': ['"', '"', '"'],
+    let g:vim_chunk_comments = {'vim': ['"', '"', '"'],
                              \  'vimrc': ['"', '"', '"'],
                              \  'sh': [':<<!', '', '!'],
                              \  'md': ['```', '', '```']
@@ -64,7 +64,7 @@
                              \  'java': '//', 'class': '//',
                              \  'c': '//', 'h': '//'}
                              \  'default: '#' }
-    let g:vim_counk_comments = {'vim': ['"', '"', '"'],
+    let g:vim_chunk_comments = {'vim': ['"', '"', '"'],
                              \  'vimrc': ['"', '"', '"'],
                              \  'sh': [':<<!', '', '!'],
                              \  'md': ['```', '', '```']

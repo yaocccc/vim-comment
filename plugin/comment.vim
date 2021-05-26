@@ -2,12 +2,12 @@ if exists('s:loaded') | finish | endif
 let s:loaded = 1
 
 let s:line_comments  = get(g:, 'vim_line_comments',  { 'vim': '"', 'vimrc': '"', 'js': '//', 'ts': '//', 'java': '//', 'class': '//', 'c': '//', 'h': '//' })
-let s:counk_comments = get(g:, 'vim_counk_comments', { 'vim': ['"', '"', '"'], 'vimrc': ['"', '"', '"'], 'sh': [':<<!', '', '!'], 'md': ['```', '', '```'] })
+let s:chunk_comments = get(g:, 'vim_chunk_comments', { 'vim': ['"', '"', '"'], 'vimrc': ['"', '"', '"'], 'sh': [':<<!', '', '!'], 'md': ['```', '', '```'] })
 let s:vim_comment_gap = get(g:, 'vim_comment_gap', 1)
 
 command! NToggleComment call <SID>toggleLineComment(line("."), line("."))
 command! VToggleComment call <SID>toggleLineComment(line("'<"), line("'>"))
-command! CToggleComment call <SID>toggleCounkComment(line("'<"), line("'>"))
+command! CToggleComment call <SID>toggleChunkComment(line("'<"), line("'>"))
 
 func! s:toggleLineComment(num1, num2)
     let com = get(s:line_comments, expand('%:e'), '#')
@@ -41,9 +41,9 @@ func! s:checkLineComment(num1, num2, com)
     return [commented, col]
 endf
 
-func! s:toggleCounkComment(num1, num2)
-    let coms = get(s:counk_comments, expand('%:e'), ['/* ', ' * ', ' */'])
-    let [commented, col] = s:checkCounkComment(a:num1, a:num2, coms)
+func! s:toggleChunkComment(num1, num2)
+    let coms = get(s:chunk_comments, expand('%:e'), ['/* ', ' * ', ' */'])
+    let [commented, col] = s:checkChunkComment(a:num1, a:num2, coms)
     if commented
         for num in range(a:num1 + 1, a:num2 - 1)
             let line = getline(num)
@@ -61,7 +61,7 @@ func! s:toggleCounkComment(num1, num2)
     endif
 endf
 
-func! s:checkCounkComment(num1, num2, coms)
+func! s:checkChunkComment(num1, num2, coms)
     let commented = 1
     let col = 999
     for num in range(a:num1, a:num2)
