@@ -10,7 +10,7 @@ command! VToggleComment call <SID>toggleLineComment(line("'<"), line("'>"))
 command! CToggleComment call <SID>toggleChunkComment(line("'<"), line("'>"))
 
 func! s:toggleLineComment(num1, num2)
-    let com = get(s:line_comments, expand('%:t'), 0) || get(s:line_comments, expand('%:e'), '#')
+    let com = get(s:line_comments, expand('%:t'), get(s:line_comments, expand('%:e'), '#'))
     let [commented, col] = s:checkLineComment(a:num1, a:num2, com)
     let com = com . printf('%'.s:vim_comment_gap.'s', '')
     if commented
@@ -42,7 +42,7 @@ func! s:checkLineComment(num1, num2, com)
 endf
 
 func! s:toggleChunkComment(num1, num2)
-    let coms = get(s:chunk_comments, expand('%:t'), 0) || get(s:chunk_comments, expand('%:e'), ['/* ', ' * ', ' */'])
+    let coms = get(s:chunk_comments, expand('%:t'), get(s:chunk_comments, expand('%:e'), ['/* ', ' * ', ' */']))
     let [commented, col] = s:checkChunkComment(a:num1, a:num2, coms)
     if commented
         for num in range(a:num1 + 1, a:num2 - 1)
