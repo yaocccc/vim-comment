@@ -36,13 +36,18 @@
     let g:vim_line_comments = { 'vim': '"', 'vimrc': '"',
                              \  'js': '//', 'ts': '//',
                              \  'java': '//', 'class': '//',
-                             \  'c': '//', 'h': '//'}
-                             \  'default: '#' }
+                             \  'c': '//', 'h': '//',
+                             \  'default: '#',
+                             "   or use filename key
+                             \  'go.mod': '//'}
+                             }
     let g:vim_chunk_comments = {'vim': ['"', '"', '"'],
                              \  'vimrc': ['"', '"', '"'],
                              \  'sh': [':<<!', '', '!'],
-                             \  'md': ['```', '', '```']
-                             \  'default': ['/*', ' *', ' */']}
+                             \  'md': ['```', '', '```'],
+                             \  'default': ['/*', ' *', ' */'],
+                             "   or use filename key
+                             \  'go.mod': ['/*', ' *', ' */']}
 
   the space length between the comment and the content
     let g:vim_comment_gap = 1
@@ -57,18 +62,22 @@
 ```
 
 ```options
-  为不同的文件后缀设置注释
+  为不同的文件后缀或文件名设置注释
   默认:
     let g:vim_line_comments = {  'vim': '"', 'vimrc': '"',
                              \  'js': '//', 'ts': '//',
                              \  'java': '//', 'class': '//',
-                             \  'c': '//', 'h': '//'}
-                             \  'default: '#' }
+                             \  'c': '//', 'h': '//',
+                             \  'default: '#',
+                             "   也可以使用文件名进行过滤
+                             \  'go.mod': '//'}
     let g:vim_chunk_comments = {'vim': ['"', '"', '"'],
                              \  'vimrc': ['"', '"', '"'],
                              \  'sh': [':<<!', '', '!'],
-                             \  'md': ['```', '', '```']
-                             \  'default': ['/*', ' *', ' */']}
+                             \  'md': ['```', '', '```'],
+                             \  'default': ['/*', ' *', ' */'],
+                             "   也可以使用文件名进行过滤
+                             \  'go.mod': ['/*', ' *', ' */']}
 
   自定义注释标记和被注释内容的间隔空格长度
     let g:vim_comment_gap = 1
